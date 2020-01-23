@@ -1,0 +1,8 @@
+[INFO]: Starting the GameSceneManager
+[INFO]: OpenGL version: 4.6.0 NVIDIA 436.02
+[INFO]: Graphics card vendor NVIDIA Corporation
+[INFO]: Graphics card name GeForce GTX 1660 Ti/PCIe/SSE2
+[INFO]: GLSL Version 4.60 NVIDIA
+[INFO]: Created Scene0: 
+[INFO]: Created Scene1: 
+[INFO]: Deleting the GameSceneManager
