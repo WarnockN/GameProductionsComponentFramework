@@ -12,7 +12,7 @@ Spaceship::Spaceship(Mesh* mesh_, Shader* shader_, Texture* texture_) :
 Spaceship::~Spaceship() {}
 
 bool Spaceship::OnCreate() { return true; } /// Just a stub
-void Spaceship::OnDestroy() {}				  /// Just a stub
+void Spaceship::OnDestroy() {}  /// Just a stub
 
 void Spaceship::Update(float deltaTime_) {
 	spaceTime += deltaTime_;
