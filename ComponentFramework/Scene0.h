@@ -15,7 +15,7 @@ class Texture;
 class Scene0 : public Scene {
 private:
 	Camera *camera;
-	DemoObject *demoObject;
+	Player* player;
 	Vec3 lightSource;
 	Mesh *meshPtr;
 	Shader *shaderPtr;

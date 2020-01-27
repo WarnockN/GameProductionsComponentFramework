@@ -35,3 +35,7 @@ void Player::Render() const {
 }
 
 void Player::HandleEvents(const SDL_Event &event) {} /// Just a stub
+
+void Player::UpdateInput(Window& window, Vec3& pos) {
+	
+}

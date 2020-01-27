@@ -7,6 +7,7 @@
 #include "Texture.h"
 #include "GameObject.h"
 #include "PhysicsObject.h"
+#include "Window.h"
 
 using namespace MATH;
 
@@ -34,6 +35,8 @@ public:
 	inline Shader* getShader() const { return shader; }
 	inline void setModelMatrix(const Matrix4 &modelMatrix_) { modelMatrix = modelMatrix_; }
 	inline const Matrix4& getModelMatrix() { return modelMatrix; }
+
+	void UpdateInput(Window& window, Vec3& pos);
 };
 
 #endif
