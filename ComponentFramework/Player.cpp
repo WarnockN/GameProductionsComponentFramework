@@ -34,8 +34,61 @@ void Player::Render() const {
 	glBindTexture(GL_TEXTURE_2D, 0);
 }
 
-void Player::HandleEvents(const SDL_Event &event) {} /// Just a stub
+void Player::HandleEvents(SDL_Event& sdlEvent) {
+	while (SDL_PollEvent(&sdlEvent)) {
+		switch (sdlEvent.type) {
+		//get the pressed key of the player
+		case SDL_KEYDOWN:
+			switch (sdlEvent.key.keysym.sym) {
+			case SDLK_a:
+				//move player according to keys pressed, so something like:
+				//player.vel -= 1;
+				break;
+			case SDLK_d:
+				//player.vel += 1;
+				break;
+			case SDLK_w:
+				//player.vel -= 1;
+				break;
+			case SDLK_s:
+				//player.vel += 1;
+				break;
+			case SDLK_SPACE:
+				//set jump code here
+				break;
+			case SDLK_LCTRL:
+				//set crouch code here if we want to crouch 
+				break;
+			default:
+				break;
+			}
+			break;
 
-void Player::UpdateInput(Window& window, Vec3& pos) {
-	
+		// we wann use key up to set the velocity to zero so the player stops moving when we let go of the key.
+		case SDL_KEYUP:
+			switch (sdlEvent.key.keysym.sym) {
+			case SDLK_a:
+				//move player according to keys pressed, so something like:
+				//player.vel = 0;
+				break;
+			case SDLK_d:
+				//player.vel = 0;
+				break;
+			case SDLK_w:
+				//player.vel = 0;
+				break;
+			case SDLK_s:
+				//player.vel = 0;
+				break;
+			case SDLK_SPACE:
+				//set jump code here
+				break;
+			case SDLK_LCTRL:
+				//set crouch code here if we want to crouch 
+				break;
+			default:
+				break;
+			}
+		}
 }
+

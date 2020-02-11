@@ -22,6 +22,8 @@ private:
 	Shader *shader;
 	Texture *texture;
 
+	Vec3 pos, vel, accel;
+
 public:
 	Player(Mesh *mesh_, Shader *shader_, Texture *texture_);
 	~Player();
@@ -29,14 +31,12 @@ public:
 	virtual void OnDestroy();
 	virtual void Update(const float deltaTime_);
 	virtual void Render() const;
-	virtual void HandleEvents(const SDL_Event &event);
+	virtual void HandleEvents(SDL_Event &sdlEvent);
 
 
 	inline Shader* getShader() const { return shader; }
 	inline void setModelMatrix(const Matrix4 &modelMatrix_) { modelMatrix = modelMatrix_; }
 	inline const Matrix4& getModelMatrix() { return modelMatrix; }
-
-	void UpdateInput(Window& window, Vec3& pos);
 };
 
 #endif
