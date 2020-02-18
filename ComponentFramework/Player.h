@@ -31,7 +31,7 @@ public:
 	virtual void OnDestroy();
 	virtual void Update(const float deltaTime_);
 	virtual void Render() const;
-	virtual void HandleEvents(SDL_Event &sdlEvent);
+	void HandleEvents(SDL_Event &sdlEvent);
 
 
 	inline Shader* getShader() const { return shader; }

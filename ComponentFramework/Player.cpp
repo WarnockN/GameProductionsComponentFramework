@@ -37,7 +37,7 @@ void Player::Render() const {
 void Player::HandleEvents(SDL_Event& sdlEvent) {
 	while (SDL_PollEvent(&sdlEvent)) {
 		switch (sdlEvent.type) {
-		//get the pressed key of the player
+			//get the pressed key of the player
 		case SDL_KEYDOWN:
 			switch (sdlEvent.key.keysym.sym) {
 			case SDLK_a:
@@ -64,7 +64,7 @@ void Player::HandleEvents(SDL_Event& sdlEvent) {
 			}
 			break;
 
-		// we wann use key up to set the velocity to zero so the player stops moving when we let go of the key.
+			// we wann use key up to set the velocity to zero so the player stops moving when we let go of the key.
 		case SDL_KEYUP:
 			switch (sdlEvent.key.keysym.sym) {
 			case SDLK_a:
@@ -90,5 +90,5 @@ void Player::HandleEvents(SDL_Event& sdlEvent) {
 				break;
 			}
 		}
+	}
 }
-
