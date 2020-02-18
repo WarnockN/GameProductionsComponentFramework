@@ -53,14 +53,11 @@ void Scene0::HandleEvents(const SDL_Event &sdlEvent) {
 }
 
 void Scene0::Update(const float deltaTime) {
-	/***player->Update(deltaTime); 
+	player->Update(deltaTime); 
 	static float rotation = 0.0f;
-	rotation += 0.5f;
+	rotation += 1.0f;
 	player->setModelMatrix(MMath::rotate(rotation, Vec3(0.0f, 1.0f, 0.0f)));
-	***/
-	player->setVel(Vec3(1.0, 0.0, 0.0));
-	Physics::RigidbodyRotation(*player, deltaTime);
-	player->setModelMatrix(MMath::translate(player->getPos()));
+	
 }
 
 void Scene0::Render() const {
