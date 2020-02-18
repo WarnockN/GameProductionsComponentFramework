@@ -1,8 +1,8 @@
 #include "Player.h"
-
 #include "MMath.h"
+#include "Physics.h"
 
-Player::Player(Mesh *mesh_, Shader *shader_, Texture *texture_): 
+Player::Player(Mesh* mesh_, Shader* shader_, Texture* texture_) :
 	mesh(mesh_), shader(shader_), texture(texture_) {
 
 	modelMatrixID = shader->getUniformID("modelMatrix");
@@ -11,8 +11,9 @@ Player::Player(Mesh *mesh_, Shader *shader_, Texture *texture_):
 
 Player::~Player() {}
 
-bool Player::OnCreate() { return true;  } /// Just a stub
-void Player::OnDestroy() {}				  /// Just a stub
+bool Player::OnCreate() { return true; } /// Just a stub
+void Player::OnDestroy() {}  /// Just a stub
+
 void Player::Update(float deltaTime_) {} /// Just a stub
 
 void Player::Render() const {
@@ -34,30 +35,17 @@ void Player::Render() const {
 	glBindTexture(GL_TEXTURE_2D, 0);
 }
 
-void Player::HandleEvents(SDL_Event& sdlEvent) {
-	while (SDL_PollEvent(&sdlEvent)) {
-		switch (sdlEvent.type) {
+void Player::HandleEvents(SDL_Event& event) {
+	while (SDL_PollEvent(&event)) {
+		switch (event.type) {
 			//get the pressed key of the player
 		case SDL_KEYDOWN:
-			switch (sdlEvent.key.keysym.sym) {
-			case SDLK_a:
-				//move player according to keys pressed, so something like:
-				//player.vel -= 1;
-				break;
-			case SDLK_d:
-				//player.vel += 1;
-				break;
+			switch (event.key.keysym.sym) {
 			case SDLK_w:
-				//player.vel -= 1;
+				vel.y + 1;
 				break;
 			case SDLK_s:
 				//player.vel += 1;
-				break;
-			case SDLK_SPACE:
-				//set jump code here
-				break;
-			case SDLK_LCTRL:
-				//set crouch code here if we want to crouch 
 				break;
 			default:
 				break;
@@ -66,29 +54,16 @@ void Player::HandleEvents(SDL_Event& sdlEvent) {
 
 			// we wann use key up to set the velocity to zero so the player stops moving when we let go of the key.
 		case SDL_KEYUP:
-			switch (sdlEvent.key.keysym.sym) {
-			case SDLK_a:
-				//move player according to keys pressed, so something like:
-				//player.vel = 0;
-				break;
-			case SDLK_d:
-				//player.vel = 0;
-				break;
+			switch (event.key.keysym.sym) {
 			case SDLK_w:
-				//player.vel = 0;
+				vel.y = 0;
 				break;
 			case SDLK_s:
 				//player.vel = 0;
-				break;
-			case SDLK_SPACE:
-				//set jump code here
-				break;
-			case SDLK_LCTRL:
-				//set crouch code here if we want to crouch 
 				break;
 			default:
 				break;
 			}
 		}
 	}
-}
+} /// Just a stub

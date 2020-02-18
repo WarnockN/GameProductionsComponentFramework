@@ -13,7 +13,7 @@
 #include "Physics.h"
 #include "Spaceship.h"
 
-Scene0::Scene0(): camera(nullptr), player(nullptr),meshPtr(nullptr),shaderPtr(nullptr),texturePtr(nullptr) {
+Scene0::Scene0(): camera(nullptr), player(nullptr), meshPtr(nullptr), shaderPtr(nullptr), texturePtr(nullptr) {
 	Debug::Info("Created Scene0: ", __FILE__, __LINE__);
 }
 
@@ -42,12 +42,9 @@ bool Scene0::OnCreate() {
 
 	player = new Player(meshPtr, shaderPtr, nullptr);
 	if (player == nullptr) {
-		Debug::FatalError("GameObject could not be created", __FILE__, __LINE__);
+		Debug::FatalError("Player cannot be created!", __FILE__, __LINE__);
 		return false;
 	}
-	player->setPos(Vec3(-5.0, 0.0, 0.0));
-	player->setModelMatrix(MMath::translate(player->getPos()));
-	
 	return true;
 }
 

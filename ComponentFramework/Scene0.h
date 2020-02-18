@@ -11,6 +11,7 @@ class DemoObject;
 class Mesh;
 class Shader;
 class Texture;
+class Player;
 
 class Scene0 : public Scene {
 private:
