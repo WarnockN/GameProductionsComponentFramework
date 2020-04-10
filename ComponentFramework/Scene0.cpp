@@ -13,7 +13,6 @@
 #include "Physics.h"
 #include "Spaceship.h"
 
-
 Scene0::Scene0(): camera(nullptr), player(nullptr), meshPtr(nullptr), shaderPtr(nullptr), texturePtr(nullptr) {
 	Debug::Info("Created Scene0: ", __FILE__, __LINE__);
 }
@@ -28,7 +27,7 @@ bool Scene0::OnCreate() {
 		return false;
 	}
 	meshPtr = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
-	shaderPtr = new Shader("textureVert.glsl", "textureFrag.glsl");
+	shaderPtr = new Shader("phongVert.glsl", "phongFrag.glsl");
 	texturePtr = new Texture();
 	if (meshPtr == nullptr|| shaderPtr == nullptr || texturePtr == nullptr) {
 		Debug::FatalError("Couldn't create game object assets", __FILE__, __LINE__);
@@ -41,8 +40,7 @@ bool Scene0::OnCreate() {
 		return false;
 	}
 
-	player = new Player(meshPtr, shaderPtr, texturePtr);
-
+	player = new Player(meshPtr, shaderPtr, nullptr);
 	if (player == nullptr) {
 		Debug::FatalError("Player cannot be created!", __FILE__, __LINE__);
 		return false;
@@ -51,13 +49,14 @@ bool Scene0::OnCreate() {
 }
 
 void Scene0::HandleEvents(const SDL_Event &sdlEvent) {
-	//player->HandleEvents(sdlEvent);
 
 }
 
 void Scene0::Update(const float deltaTime) {
 	player->Update(deltaTime); 
-	
+	static float rotation = 0.0f;
+	rotation += 1.0f;
+	player->setModelMatrix(MMath::rotate(rotation, Vec3(0.0f, 1.0f, 0.0f)));
 	
 }
 
