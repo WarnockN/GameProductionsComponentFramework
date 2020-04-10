@@ -14,7 +14,8 @@ Player::~Player() {}
 bool Player::OnCreate() { return true; } /// Just a stub
 void Player::OnDestroy() {}  /// Just a stub
 
-void Player::Update(float deltaTime_) {} /// Just a stub
+void Player::Update(float deltaTime_) {
+} /// Just a stub
 
 void Player::Render() const {
 
@@ -38,14 +39,26 @@ void Player::Render() const {
 void Player::HandleEvents(SDL_Event& event) {
 	while (SDL_PollEvent(&event)) {
 		switch (event.type) {
-			//get the pressed key of the player
+		//get the pressed key of the player
 		case SDL_KEYDOWN:
 			switch (event.key.keysym.sym) {
 			case SDLK_w:
-				vel.y + 1;
+				vel.y += 1;
+				if (vel.y >= 5) {
+					vel.y -= 1;
+				}
 				break;
 			case SDLK_s:
-				//player.vel += 1;
+				vel.y -= 1;
+				if (vel.y <= 0) {
+					vel.y = 0;
+				}
+				break;
+			case SDLK_a:
+				vel.x -= 1;
+				break;
+			case SDLK_d:
+				vel.x += 1;
 				break;
 			default:
 				break;
@@ -59,11 +72,19 @@ void Player::HandleEvents(SDL_Event& event) {
 				vel.y = 0;
 				break;
 			case SDLK_s:
-				//player.vel = 0;
+				vel.y = 0;
+				break;
+			case SDLK_a:
+				vel.x = 0;
+				break;
+			case SDLK_d:
+				vel.x = 0;
 				break;
 			default:
 				break;
 			}
 		}
 	}
+	pos.x += vel.x;
+	pos.y += vel.y;
 } /// Just a stub
