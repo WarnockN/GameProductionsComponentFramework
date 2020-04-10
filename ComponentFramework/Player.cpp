@@ -42,10 +42,18 @@ void Player::HandleEvents(SDL_Event& event) {
 		case SDL_KEYDOWN:
 			switch (event.key.keysym.sym) {
 			case SDLK_w:
-				vel.y + 1;
+				vel.y += 1;
+				if (vel.y >= 5) { vel.y -= 1; }
+				break;
+			case SDLK_a:
+				vel.x -= 1;
 				break;
 			case SDLK_s:
-				//player.vel += 1;
+				vel.y -= 1;
+				if (vel.y <= 0) { vel.y = 0; }
+				break;
+			case SDLK_d:
+				vel.x += 1;
 				break;
 			default:
 				break;
@@ -58,12 +66,21 @@ void Player::HandleEvents(SDL_Event& event) {
 			case SDLK_w:
 				vel.y = 0;
 				break;
+			case SDLK_a:
+				vel.x = 0;
+				break;
 			case SDLK_s:
-				//player.vel = 0;
+				vel.y = 0;
+				break;
+			case SDLK_d:
+				vel.x = 0;
 				break;
 			default:
 				break;
 			}
 		}
 	}
+	pos.x += vel.x;
+	pos.y += vel.y;
+
 } /// Just a stub

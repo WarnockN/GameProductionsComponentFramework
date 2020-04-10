@@ -1,7 +1,6 @@
-#ifndef PLAYER_H
-#define PLAYER_H
+#ifndef OBSTACLE_H
+#define OBSTACLE_H
 #include <glew.h>
-#include <SDL.h>
 #include "Matrix.h"
 #include "Mesh.h"
 #include "Shader.h"
@@ -12,9 +11,12 @@
 using namespace MATH;
 
 
-class Player : public PhysicsObject {
+class Obstacle : public PhysicsObject, public GameObject {
 
 private:
+	Vec3 pos, vel, accel;
+	float mass;
+
 	Matrix4 modelMatrix;
 	GLuint modelMatrixID;
 	GLuint normalMatrixID;
@@ -22,24 +24,21 @@ private:
 	Shader* shader;
 	Texture* texture;
 
-	Vec3 pos, vel, accel;
-	float mass;
-	Sphere boundingSphere;
-
 public:
-	Player(Mesh* mesh_, Shader* shader_, Texture* texture_);
-	~Player();
+	Obstacle();
+	Obstacle(Mesh* mesh_, Shader* shader_, Texture* texture_);
+	~Obstacle();
 	virtual bool OnCreate();
 	virtual void OnDestroy();
 	virtual void Update(const float deltaTime_);
 	virtual void Render() const;
-	virtual void HandleEvents(SDL_Event& event);
+	virtual void HandleEvents(const SDL_Event& event);
 
 
 	inline Shader* getShader() const { return shader; }
 	inline void setModelMatrix(const Matrix4& modelMatrix_) { modelMatrix = modelMatrix_; }
-	inline Matrix4& getModelMatrix() { return modelMatrix; }
-	
+	inline const Matrix4& getModelMatrix() { return modelMatrix; }
+
 	inline void setPos(Vec3& pos_) { pos = pos_; }
 	inline Vec3 getPos() { return pos; }
 	inline void setVel(Vec3& vel_) { vel = vel_; }
@@ -49,8 +48,10 @@ public:
 
 	inline void setMass(float mass_) { mass = mass_; }
 	inline float getMass() { return mass; }
+
+
+
 };
 
 #endif
-
 
