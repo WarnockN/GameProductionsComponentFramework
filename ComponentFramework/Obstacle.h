@@ -25,7 +25,6 @@ private:
 	Texture* texture;
 
 public:
-	Obstacle();
 	Obstacle(Mesh* mesh_, Shader* shader_, Texture* texture_);
 	~Obstacle();
 	virtual bool OnCreate();
@@ -48,8 +47,6 @@ public:
 
 	inline void setMass(float mass_) { mass = mass_; }
 	inline float getMass() { return mass; }
-
-
 
 };
 

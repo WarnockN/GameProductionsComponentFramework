@@ -7,6 +7,11 @@ Player::Player(Mesh* mesh_, Shader* shader_, Texture* texture_) :
 
 	modelMatrixID = shader->getUniformID("modelMatrix");
 	normalMatrixID = shader->getUniformID("normalMatrix");
+
+	Vec3 pos(0, 0, 0);
+	Vec3 vel(0, 0, 0);
+	Vec3 accel(0, 0, 0);
+	mass = 100.0f;
 }
 
 Player::~Player() {}

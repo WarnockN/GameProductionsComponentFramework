@@ -1,19 +1,17 @@
 #include "Obstacle.h"
-
 #include "MMath.h"
 
-Obstacle::Obstacle() {
-	Vec3 pos(0, 0, 0);
-	Vec3 vel(0, 0, 0);
-	Vec3 accel(0, 0, 0);
-
-	mass = 500.0f;
-}
 Obstacle::Obstacle(Mesh* mesh_, Shader* shader_, Texture* texture_) :
 	mesh(mesh_), shader(shader_), texture(texture_) {
 
 	modelMatrixID = shader->getUniformID("modelMatrix");
 	normalMatrixID = shader->getUniformID("normalMatrix");
+
+	Vec3 pos(0, 0, 0);
+	Vec3 vel(0, 0, 0);
+	Vec3 accel(0, 0, 0);
+
+	mass = 500.0f;
 }
 
 Obstacle::~Obstacle() {}
